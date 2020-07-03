@@ -8,7 +8,7 @@
 #define N 4
 #define NMAX 10
 	
-typedef struct tnode //описание структуры дерева
+typedef struct tnode //РѕРїРёСЃР°РЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РґРµСЂРµРІР°
 {
 		char tfield;
 		char nfield;
@@ -17,27 +17,27 @@ typedef struct tnode //описание структуры дерева
 		struct tnode *parent;
 } btree ;	
 
-struct tnode *talloc(void) // выделение памяти для структуры дерева
+struct tnode *talloc(void) // РІС‹РґРµР»РµРЅРёРµ РїР°РјСЏС‚Рё РґР»СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹ РґРµСЂРµРІР°
 {
 	return (btree*) malloc(sizeof(btree));
 }
 
-typedef struct st { //описание структуры стека
-  char elem[NMAX]; // массив дя хранения элементов стека
-  int top; // индекс массива
+typedef struct st { //РѕРїРёСЃР°РЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ СЃС‚РµРєР°
+  char elem[NMAX]; // РјР°СЃСЃРёРІ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ СЃС‚РµРєР°
+  int top; // РёРЅРґРµРєСЃ РјР°СЃСЃРёРІР°
 }stack;
 
-stack *salloc(void) // выделение памяти для структуры стека 
+stack *salloc(void) // РІС‹РґРµР»РµРЅРёРµ РїР°РјСЏС‚Рё РґР»СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹ СЃС‚РµРєР° 
 {
 	return (stack*) malloc(sizeof(stack*));
 }
 
-void init(stack *stk) // инициализация стека
+void init(stack *stk) // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃС‚РµРєР°
 {
   stk->top = 0;
 }
 
-void push (stack *stk, char f) // поместить эемент в стек
+void push (stack *stk, char f) // РїРѕРјРµСЃС‚РёС‚СЊ СЌРµРјРµРЅС‚ РІ СЃС‚РµРє
 {
   if(stk->top < NMAX) 
   {
@@ -46,7 +46,7 @@ void push (stack *stk, char f) // поместить эемент в стек
 	}
 }
 
-char pop(stack *stk) // вернуть эемент стека с вершины и удалить его в стеке
+char pop(stack *stk) // РІРµСЂРЅСѓС‚СЊ СЌРµРјРµРЅС‚ СЃС‚РµРєР° СЃ РІРµСЂС€РёРЅС‹ Рё СѓРґР°Р»РёС‚СЊ РµРіРѕ РІ СЃС‚РµРєРµ
 {
   char el;
   if((stk->top) > 0)
@@ -62,7 +62,7 @@ char pop(stack *stk) // вернуть эемент стека с вершины и удалить его в стеке
   }
 }
 
-bool isempty(stack *stk) // пуст ли стек?
+bool isempty(stack *stk) // РїСѓСЃС‚ Р»Рё СЃС‚РµРє?
 {
 	bool bln = false;
   if(stk->top == 0)
@@ -70,11 +70,11 @@ bool isempty(stack *stk) // пуст ли стек?
   return bln;
 }
 
-void stkPrint(stack *stk, int count) //печать count штук эементов стека, конечно же с верхушки
+void stkPrint(stack *stk, int count) //РїРµС‡Р°С‚СЊ count С€С‚СѓРє СЌРµРјРµРЅС‚РѕРІ СЃС‚РµРєР°, РєРѕРЅРµС‡РЅРѕ Р¶Рµ СЃ РІРµСЂС…СѓС€РєРё
 { 
-	int i = stk->top; // i - количество элементов в стеке
+	int i = stk->top; // // i - РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ СЃС‚РµРєРµ
   	if(isempty(stk)) 
-  		return; // стек пуст
+  		return; // СЃС‚РµРє РїСѓСЃС‚
   	do 
   	{
     	i--;
@@ -83,12 +83,12 @@ void stkPrint(stack *stk, int count) //печать count штук эементов стека, конечно
   while(--count > 0);
 }
 
-bool stkCheck(stack *stk, char key) // проверка всех элементов стека на соответствие key 
+bool stkCheck(stack *stk, char key) // РїСЂРѕРІРµСЂРєР° РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ СЃС‚РµРєР° РЅР° СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ key
 { 
 	bool bln = false;
-	int i = stk->top; // i - количество элементов в стеке
+	int i = stk->top; 
   	if(isempty(stk)) 
-  		return bln; // стек пуст
+  		return bln;
   	do 
   	{
     	i--;
@@ -102,7 +102,7 @@ bool stkCheck(stack *stk, char key) // проверка всех элементов стека на соответс
   	return bln;
 }
 
-bool term (char key) //является t терминалом?
+bool term (char key) //СЏРІР»СЏРµС‚СЃСЏ t С‚РµСЂРјРёРЅР°Р»РѕРј?
 {
 	bool bln = false;
 	int tr = (int)(key);
@@ -111,8 +111,7 @@ bool term (char key) //является t терминалом?
 	return bln;
 }
 
-btree *move_in_depth (btree *root, char key) // поиск в глубину корня с текущим нетерминалом key. Если таковой отсутствует, то возвращает корень 
-{
+btree *move_in_depth (btree *root, char key) /// РїРѕРёСЃРє РІ РіР»СѓР±РёРЅСѓ РєРѕСЂРЅСЏ СЃ С‚РµРєСѓС‰РёРј РЅРµС‚РµСЂРјРёРЅР°Р»РѕРј key. Р•СЃР»Рё С‚Р°РєРѕРІРѕР№ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚, С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕСЂРµРЅСЊ 
 	btree *root2 = root;
 	if ((root->left == NULL) && (root->right == NULL))
 	{
@@ -141,7 +140,7 @@ btree *move_in_depth (btree *root, char key) // поиск в глубину корня с текущим 
 	}
 }
 
-btree *addtree (btree *root, btree *tmp, char key) // создание бинарного дерева
+btree *addtree (btree *root, btree *tmp, char key) // СЃРѕР·РґР°РЅРёРµ Р±РёРЅР°СЂРЅРѕРіРѕ РґРµСЂРµРІР°
 {
 	btree *root2  = root, *root3;
 	bool bln = false;
@@ -198,7 +197,7 @@ btree *addtree (btree *root, btree *tmp, char key) // создание бинарного дерева
 		return root;
 }
 
-void treeprint (btree *root) // печать дерева
+void treeprint (btree *root) // ГЇГҐГ·Г ГІГј Г¤ГҐГ°ГҐГўГ 
 {
 	if (root != NULL)
 	{
@@ -212,7 +211,7 @@ void treeprint (btree *root) // печать дерева
 	}
 }
 
-stack *pop_nonterm (stack *stk, btree *root) // поместить в стек все нетерминалы
+stack *pop_nonterm (stack *stk, btree *root) // РїРѕРјРµСЃС‚РёС‚СЊ РІ СЃС‚РµРє РІСЃРµ РЅРµС‚РµСЂРјРёРЅР°Р»С‹
 {
 	while (root != NULL)
 	{
@@ -227,7 +226,7 @@ stack *pop_nonterm (stack *stk, btree *root) // поместить в стек все нетерминалы
 	return stk;
 }
 
-stack *pop_term (stack *stk, btree *root) // поместить в стек все терминалы
+stack *pop_term (stack *stk, btree *root) // РїРѕРјРµСЃС‚РёС‚СЊ РІ СЃС‚РµРє РІСЃРµ С‚РµСЂРјРёРЅР°Р»С‹
 {
 	while (root != NULL)
 	{
@@ -242,7 +241,7 @@ stack *pop_term (stack *stk, btree *root) // поместить в стек все терминалы
 	return stk;
 }
 
-void  counting (btree *root, int *dim_n, int *dim_t) // подсчет ко-ва всех терминалов и нетерминаов
+void  counting (btree *root, int *dim_n, int *dim_t) // РїРѕРґСЃС‡РµС‚ РєРѕ-РІР° РІСЃРµС… С‚РµСЂРјРёРЅР°Р»РѕРІ Рё РЅРµС‚РµСЂРјРёРЅР°Р»РѕРІ
 {
 //	int count_n = 0;
 //	int count_t = 0;
@@ -257,14 +256,14 @@ void  counting (btree *root, int *dim_n, int *dim_t) // подсчет ко-ва всех терми
 	}
 }
 
-char itoa (int i) // число -> символ 
+char itoa (int i) // Г·ГЁГ±Г«Г® -> Г±ГЁГ¬ГўГ®Г« 
 {
 	i = i + 48;
 	char a = (char)(i);
 	return a;
 }
 
-char **dalloc(char **A, int  row, int col) // выделение памяти для двумерного динамического массива
+char **dalloc(char **A, int  row, int col) // РІС‹РґРµР»РµРЅРёРµ РїР°РјСЏС‚Рё РґР»СЏ РґРІСѓРјРµСЂРЅРѕРіРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°
 {
     A = (char **)malloc(row*sizeof(char *));
     for(int i = 0; i <= row; i++) {
@@ -273,7 +272,7 @@ char **dalloc(char **A, int  row, int col) // выделение памяти для двумерного ди
     return A;
 }
 
-void create_dArray (char **Arr, int row, int col) //  создание динамического двумерного массива
+void create_dArray (char **Arr, int row, int col) //  СЃРѕР·РґР°РЅРёРµ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РґРІСѓРјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР°
 {
 	for (int i = 0; i <= row; i++) 
         for (int j = 0; j <= col; j++)
@@ -285,14 +284,14 @@ void create_dArray (char **Arr, int row, int col) //  создание динамического дву
 		}
 }
 
-void dfree(char **A, int row) // освобождение памяти от двумерного динамического массива
+void dfree(char **A, int row) // РѕСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё РѕС‚ РґРІСѓРјРµСЂРЅРѕРіРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°
 {
     for(int i = 0; i <= row; i++) 
         free(A[i]);
     free(A);
 }
 
-void dprint(char **A,  int row,  int col) // печать двумерного динамического массива
+void dprint(char **A,  int row,  int col) // РїРµС‡Р°С‚СЊ РґРІСѓРјРµСЂРЅРѕРіРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°
 {
     for(int i = 0; i <= row; i++) {
         for(int j = 0; j <= col; j++) {
@@ -302,7 +301,7 @@ void dprint(char **A,  int row,  int col) // печать двумерного динамического мас
     }
 }
 
-void create_table (btree *root, stack *stk, char **Arr, int row, int col) // создание каркаса таблицы парсинга
+void create_table (btree *root, stack *stk, char **Arr, int row, int col) // СЃРѕР·РґР°РЅРёРµ РєР°СЂРєР°СЃР° С‚Р°Р±Р»РёС†С‹ РїР°СЂСЃРёРЅРіР°
 {
 	int i = 1, j = col;
 	stk = pop_nonterm (stk, root);
@@ -315,7 +314,7 @@ void create_table (btree *root, stack *stk, char **Arr, int row, int col) // соз
 }
 
 
-stack *FIRST (btree *root, stack *stk, char key) // функция FIRST 
+stack *FIRST (btree *root, stack *stk, char key) // С„СѓРЅРєС†РёСЏ FIRST 
 {
 	char chr;
 	if (term(key))
@@ -333,7 +332,7 @@ stack *FIRST (btree *root, stack *stk, char key) // функция FIRST
 	return stk;	
 }
 
-void add_parTable (btree *root, stack *stk, char **parArr, int parRow, int parCol, char **supArr, int *supRow, int supCol) // запонение таблицы парсинга 
+void add_parTable (btree *root, stack *stk, char **parArr, int parRow, int parCol, char **supArr, int *supRow, int supCol) // Р·Р°РїРѕРЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹ РїР°СЂСЃРёРЅРіР°
 {
 	char symbol;
 	int row = 1, col;
@@ -373,7 +372,7 @@ void add_parTable (btree *root, stack *stk, char **parArr, int parRow, int parCo
 	*supRow = --row;
 }
 
-void output_file (FILE *F, char **parArr, int parRow, int parCol, char **supArr, int supRow, int supCol) // создание ЛОГ-файла
+void output_file (FILE *F, char **parArr, int parRow, int parCol, char **supArr, int supRow, int supCol)// СЃРѕР·РґР°РЅРёРµ Р›РћР“-С„Р°Р№Р»Р°
 {
 	for (int i = 0; i <= parRow; i++) 
         {
@@ -393,7 +392,7 @@ void output_file (FILE *F, char **parArr, int parRow, int parCol, char **supArr,
 		}	
 }
 
-char find_cell(char **Arr, int row, int col, char X, char a) // нахождение соответствующей ячейки таблицы парсинга
+char find_cell(char **Arr, int row, int col, char X, char a) // РЅР°С…РѕР¶РґРµРЅРёРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµР№ СЏС‡РµР№РєРё С‚Р°Р±Р»РёС†С‹ РїР°СЂСЃРёРЅРіР°
 {
 	int u,t;
     for(int i = 1; i <= row; i++)
@@ -405,14 +404,14 @@ char find_cell(char **Arr, int row, int col, char X, char a) // нахождение соотв
 	return Arr[u][t];
 }				 
 
-int atoi (char a) // символ -> число
+int atoi (char a) // Г±ГЁГ¬ГўГ®Г« -> Г·ГЁГ±Г«Г®
 {
 	int i = (int)(a);
 	i = i - 48;
 	return i;
 }
 
-void parser (stack *stk, char **parArr, int row, int col, char **supArr, int supCol, char *arr) // функция синтаксического анализатора
+void parser (stack *stk, char **parArr, int row, int col, char **supArr, int supCol, char *arr) // С„СѓРЅРєС†РёСЏ СЃРёРЅС‚Р°РєСЃРёС‡РµСЃРєРѕРіРѕ Р°РЅР°Р»РёР·Р°С‚РѕСЂР°
 {
 	char X, ip, a, chr;
 	int  i = 0, index, count = 0;
@@ -485,8 +484,8 @@ int main()
 	init(stk);
 	char **parArr = dalloc(parArr, dim_u, dim_t + 1);
 	create_dArray(parArr, dim_u, dim_t + 1);
-	int supCol = 2; //размерность столбцов вспомогательной таблицы парсинга
-	int supRow; //размерность строк вспомогательной таблицы парсинга
+	int supCol = 2; //СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ СЃС‚РѕР»Р±С†РѕРІ РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅРѕР№ С‚Р°Р±Р»РёС†С‹ РїР°СЂСЃРёРЅРіР°Г 
+	int supRow; //СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ СЃС‚СЂРѕРє РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅРѕР№ С‚Р°Р±Р»РёС†С‹ РїР°СЂСЃРёРЅРіР°
 	char **supArr = dalloc(supArr, dim_u * dim_t, supCol);
 	create_dArray(supArr, dim_u * dim_t, supCol);
 	create_table(root, stk, parArr, dim_u, dim_t + 1);
